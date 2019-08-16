@@ -42,11 +42,12 @@
           <h3>Do you have any prior programming experience?</h3>
           <p>(1 = None, 5 = Some, 10 = Expert in at least 1 language)</p>
           <div class="slidecontainer">
-            <input type="range" min="0" max="10" value="5" class="slider" id="prior-exp">
+            <input type="range" min="0" max="10" value="5" class="slider range" id="prior-exp">
           </div>
+          <p> Value: <span class="slider-value" id="exp-value"></span></p>
           <!-- Q: do you like to make things pretty or just functional -->
           <div class="form-group">
-            <label for="style-type">Do you like to spend extra time making things pretty?</label>
+            <h3>Do you like to spend extra time making things pretty?</h3>
             <select class="form-control"id="style-type">
               <option value="0">I put in extra effort to make things really good looking</option>
               <option value="1">I like things to look nice, but wouldn't spend excessive amounts of time on it</option>
@@ -57,8 +58,9 @@
           <h3>How much effort do you want to put in to learn a new language?</h3>
           <p>(1 = None, 5 = I will use some of my free time, 10 = I will put all of my time into learning a new language)</p>
           <div class="slidecontainer">
-            <input type="range" min="0" max="10" value="5" class="slider" id="prior-exp">
+            <input type="range" min="0" max="10" value="5" class="slider range" id="effort">
           </div>
+          <p>Value: <span class="slider-value" id="effort-value"></span></p>
           <button id="submit-1" class="btn btn-primary" type="submit">See more questions</button>
         </form>
       </div>
@@ -145,7 +147,9 @@
                 </button>
               </div>
               <div class="modal-body">
-                <p id="result-value"></p>
+                <h4 id="result-lang"></h4>
+                <p id="result-details"></p>
+                <a href="#">More Details</a>
               </div>
             </div>
           </div>
