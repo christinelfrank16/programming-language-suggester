@@ -10,6 +10,7 @@ $(document).ready(function(){
     showSecondQuiz(data);
   });
 
+  // show results when second quiz (a) is submitted
   $("form#quiz-specific-1").submit(function(event){
     event.preventDefault();
     var hardware = $("input#hardware-value").prop("checked");
@@ -19,7 +20,6 @@ $(document).ready(function(){
 
     // wants to interface with hardware
     if(!hardwareMeaning && hardware){
-      var easyToLearnFeature = checkFeaturesArray(features, "2");
       if(data.learn === 0 || data.styling === 2){
         $("#result-lang").text("LabVIEW");
         $("#result-details").text(`
@@ -33,7 +33,7 @@ $(document).ready(function(){
         `);
         $("#result-link").attr("href", "https://www.ni.com/en-us/shop/labview.html");
       }
-      else if (easyToLearnFeature){
+      else if (checkFeaturesArray(features, "2")){ // checks if easy to learn is selected
         $("#result-lang").text("Python");
         $("#result-details").text(`
           Python is an interpreted, high-level, general-purpose
@@ -56,18 +56,117 @@ $(document).ready(function(){
         $("#result-link").attr("href", "https://en.wikipedia.org/wiki/C_Sharp_(programming_language)");
       }
     } else if (!hardwareMeaning){
+      // does not want to interface with hardware
+      $("#result-lang").text("Ruby");
+      $("#result-details").text(`
+        A dynamic, open source programming language with a
+      	focus on simplicity and productivity. It has an elegant
+      	syntax that is natural to read and easy to write.
+      `);
+      $("#result-link").attr("href", "https://www.ruby-lang.org/en/");
+    } else {
+      // doesn't know about interfacing
+      $("#result-lang").text("JavaScript");
+      $("#result-details").text(`
+        JavaScript (JS) is a lightweight, interpreted,
+      	or just-in-time compiled programming language with
+      	first-class functions. While it is most well-known as the
+      	scripting language for Web pages, many non-browser
+      	environments also use it.
+      `);
+      $("#result-link").attr("href", "https://developer.mozilla.org/en-US/docs/Web/JavaScript");
+    }
+
+    $(".modal").modal("show");
+  });
+
+  // show results when second quiz (b) is submitted
+  $("form#quiz-specific-2").submit(function(event){
+    event.preventDefault();
+    var reason = $("input:radio[name=reason]:checked").val();
+    var platform = $("input#platform-value").prop("checked"); // true = Mac, false = Windows
+    var platformAgnostic = $("input:checkbox[name=platform-matters]").prop("checked");
+
+    if(!platformAgnostic){
+      // Cares about platform
+      if(platform){
+        $("#result-lang").text("Swift");
+        $("#result-details").text(`
+          Swift is a general-purpose, multi-paradigm, compiled
+        	programming language developed by Apple Inc. for iOS, macOS,
+        	watchOS, tvOS, Linux, and z/OS.
+        `);
+        $("#result-link").attr("href", "https://en.wikipedia.org/wiki/Swift_(programming_language)");
+      }
+      else {
+        $("#result-lang").text("Go");
+        $("#result-details").text(`
+          Also known as Golang, is a statically typed,
+        	compiled programming language designed at Google. It is
+        	syntactically similar to C, but with memory safety,
+        	garbage collection, structural typing, and CSP-style
+        	concurrency.
+        `);
+        $("#result-link").attr("href", "https://en.wikipedia.org/wiki/Go_(programming_language)");
+      }
+      // no platform preference
+    } else {
+      if(reason === "2" || !data.styling =="2"){
+        $("#result-lang").text("JavaScript");
+        $("#result-details").text(`
+          JavaScript (JS) is a lightweight, interpreted,
+        	or just-in-time compiled programming language with
+        	first-class functions. While it is most well-known as the
+        	scripting language for Web pages, many non-browser
+        	environments also use it.
+        `);
+        $("#result-link").attr("href", "https://developer.mozilla.org/en-US/docs/Web/JavaScript");
+      } else if (effort >= 5){
+        $("#result-lang").text("Rust");
+        $("#result-details").text(`
+          Rust is a multi-paradigm system programming language
+        	focused on safety, especially safe concurrency. Rust
+        	is syntactically similar to C++, but is designed to provide
+        	better memory safety while maintaining high performance.
+        `);
+        $("#result-link").attr("href", "https://en.wikipedia.org/wiki/Rust_(programming_language)");
+      } else if (reason === "1"){
+        $("#result-lang").text("Python");
+        $("#result-details").text(`
+          Python is an interpreted, high-level, general-purpose
+        	programming language. Python's design philosophy emphasizes
+        	code readability with its notable use of significant
+        	whitespace. Its language constructs and object-oriented
+        	approach aim to help programmers write clear, logical code
+        	for small and large-scale projects.
+        `);
+        $("#result-link").attr("href", "https://en.wikipedia.org/wiki/Python_(programming_language)");
+      }
+      else {
+        $("#result-lang").text("Java");
+        $("#result-details").text(`
+          Java is a general-purpose programming language that
+        	is class-based, object-oriented, and designed to have as
+        	few implementation dependencies as possible. It is intended
+        	to let application developers write once, run anywhere (WORA),
+        	meaning that compiled Java code can run on all platforms that
+        	support Java without the need for recompilation. Java
+        	applications are typically compiled to bytecode that can
+        	run on any Java virtual machine (JVM) regardless of the
+        	underlying computer architecture.
+        `);
+        $("#result-link").attr("href", "https://en.wikipedia.org/wiki/Java_(programming_language)");
+      }
 
     }
 
     $(".modal").modal("show");
   });
 
-  $("form#quiz-specific-2").submit(function(event){
-    event.preventDefault();
-    var reason = $("input:radio[name=reason]:checked").val();
-    var platform = $("input#platform-value").prop("checked");
-    var platformAgnostic = $("input:checkbox[name=platform-matters]").prop("checked");
-  });
+
+
+
+
 
   $("#modal-btn").click(function(){
     // refresh page to clear quiz on modal close
