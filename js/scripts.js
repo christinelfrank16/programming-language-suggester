@@ -1,11 +1,11 @@
 $(document).ready(function(){
   var data = {};
-  // get and show initial slider values
-  updateSliders();
+  updateSliderValues();
 
-  // clear previous content and show second quiz
+  // clear existing 2nd quiz content and show appropriate second quiz
   $("form#quiz-intro").submit(function(event){
     event.preventDefault();
+    getInfoQuizValues(data); // get values in case of changes on re-submission
     $("#second-quiz").children().hide();
     showSecondQuiz(data);
   });
@@ -13,10 +13,10 @@ $(document).ready(function(){
   // show results when second quiz (a) is submitted
   $("form#quiz-specific-1").submit(function(event){
     event.preventDefault();
+
     var hardware = $("input#hardware-value").prop("checked");
     var hardwareMeaning = $("input:checkbox[name=hardware-meaning]").prop("checked");
     var features = $("input:checkbox[name=features]:checked").toArray();
-    console.log(features);
 
     // wants to interface with hardware
     if(!hardwareMeaning && hardware){
@@ -83,6 +83,7 @@ $(document).ready(function(){
   // show results when second quiz (b) is submitted
   $("form#quiz-specific-2").submit(function(event){
     event.preventDefault();
+
     var reason = $("input:radio[name=reason]:checked").val();
     var platform = $("input#platform-value").prop("checked"); // true = Mac, false = Windows
     var platformAgnostic = $("input:checkbox[name=platform-matters]").prop("checked");
@@ -111,7 +112,7 @@ $(document).ready(function(){
       }
       // no platform preference
     } else {
-      if(reason === "2" || !data.styling =="2"){
+      if(reason === "2" || !data.styling =="2"){ // sounds like fun or likes styling
         $("#result-lang").text("JavaScript");
         $("#result-details").text(`
           JavaScript (JS) is a lightweight, interpreted,
@@ -121,7 +122,7 @@ $(document).ready(function(){
         	environments also use it.
         `);
         $("#result-link").attr("href", "https://developer.mozilla.org/en-US/docs/Web/JavaScript");
-      } else if (effort >= 5){
+      } else if (effort >= 4){
         $("#result-lang").text("Rust");
         $("#result-details").text(`
           Rust is a multi-paradigm system programming language
@@ -163,27 +164,21 @@ $(document).ready(function(){
     $(".modal").modal("show");
   });
 
-
-
-
-
-
   $("#modal-btn").click(function(){
     // refresh page to clear quiz on modal close
     location.reload();
   });
 
-
   // update slider values when moved
-  $(".slidecontainer").on('input', function(){
-    updateSliders();
+  $(".slidecontainer").on("input", function(){
+    updateSliderValues();
   });
 
 });
 
 
 
-function updateSliders(data){
+function updateSliderValues(data){
   var experience = $("#prior-exp").val();
   $("#exp-value").text(experience);
 
@@ -191,8 +186,7 @@ function updateSliders(data){
   $("#effort-value").text(effort);
 }
 
-
-function showSecondQuiz(data){
+function getInfoQuizValues(data){
   // Get and store variables to data object
   var learn = parseInt($("input:radio[name=learn]:checked").val());
   var experience = parseInt($("#prior-exp").val());
@@ -203,9 +197,13 @@ function showSecondQuiz(data){
   data.effort = effort;
   data.learn = learn;
   data.styling = styling;
+}
 
+
+function showSecondQuiz(data){
+  getInfoQuizValues(data);
   // determine which 2nd quiz and show
-  if((experience > 3 && effort >= 6) || experience >= 6) {
+  if((data.experience > 3 && data.effort >= 6) || data.experience >= 6) {
     $("#group-2a").show();
   }
   else {

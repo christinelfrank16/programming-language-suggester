@@ -39,8 +39,8 @@
             <label class="form-check-label" for="learn-3">Physical (By Doing)</label>
           </div>
           <!-- Q: how familiar are you with programming? -->
-          <h3>Do you have any prior programming experience?</h3>
-          <p>(1 = None, 5 = Some, 10 = Expert in at least 1 language)</p>
+          <h3>Do you have any prior computer experience?</h3>
+          <p>(0 = None, 5 = Moderate, 10 = Expert at at least one topic)</p>
           <div class="slidecontainer">
             <input type="range" min="0" max="10" value="5" class="slider range" id="prior-exp">
           </div>
@@ -49,14 +49,14 @@
           <div class="form-group">
             <h3>Do you like to spend extra time making things pretty?</h3>
             <select class="form-control"id="style-type">
-              <option value="0">I put in extra effort to make things really good looking</option>
+              <option value="0">I put in extra effort to make things look really good</option>
               <option value="1">I like things to look nice, but wouldn't spend excessive amounts of time on it</option>
               <option value="2">I won't spend extra time on what it looks like as long as it works</option>
             </select>
           </div>
           <!-- Q: how familiar are you with programming? -->
           <h3>How much effort do you want to put in to learn a new language?</h3>
-          <p>(1 = None, 5 = I will use some of my free time, 10 = I will put all of my time into learning a new language)</p>
+          <p>(0 = None, 5 = I will use some of my free time, 10 = I will put all of my time into learning a new language)</p>
           <div class="slidecontainer">
             <input type="range" min="0" max="10" value="5" class="slider range" id="effort">
           </div>
@@ -87,7 +87,7 @@
             </div>
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name="features" value="1" id="features-1">
-              <label class="form-check-label" for="features-1">Effeciency</label>
+              <label class="form-check-label" for="features-1">Efficiency</label>
             </div>
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name="features" value="2" id="features-2">
@@ -121,7 +121,7 @@
               <label class="form-check-label" for="reason-2">It Sounds Fun</label>
             </div>
             <!-- Windows or Mac -->
-            <h3>Windows or Mac?</h3>
+            <h3>Would you want to program specifically for Windows or Mac?</h3>
             <div class="form-check">
               <span>Windows</span>
               <label class="switch">
@@ -154,7 +154,7 @@
                 <a id="result-link" href="#">More Details</a>
               </div>
               <div class="modal-footer">
-                <p id="note"><strong>Developers Note</strong>:<br> Description of this programming language was cited from the link provided.</p>
+                <p id="note"><strong>Developers Note</strong>:<br> Description of this programming language is cited from the link provided.</p>
                 <button id="modal-btn" type="button" class="btn btn-secondary" data-dismiss="modal">Reset Quiz</button>
               </div>
             </div>
