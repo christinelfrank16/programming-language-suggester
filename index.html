@@ -69,15 +69,15 @@
           <form id="quiz-specific-1">
             <h3>Do you want to interface with hardware?</h3>
             <div class="form-check">
-              <span>Yes</span>
+              <span>No</span>
               <label class="switch">
-                <input type="checkbox" name="hardware">
+                <input id="hardware-value" type="checkbox" name="hardware">
                 <span class="slider toggle"></span>
               </label>
-              <span>No</span>
+              <span>Yes</span>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="hardware" value="2" id="hardware-2">
+              <input class="form-check-input" type="checkbox" name="hardware-meaning" value="2" id="hardware-2">
               <label class="form-check-label" for="hardware-2">What does that mean?</label>
             </div>
             <h3>Check the features most important to you:</h3>
@@ -109,15 +109,15 @@
             <!-- Why do you want to learn a new languange -->
             <h3>Why do you want to learn a new programming language?</h3>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="reason" value="0" id="reason-0">
+              <input class="form-check-input" type="radio" name="reason" value="0" id="reason-0">
               <label class="form-check-label" for="reason-0">To Learn Something New</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="reason" value="1" id="reason-1">
+              <input class="form-check-input" type="radio" name="reason" value="1" id="reason-1">
               <label class="form-check-label" for="reason-1">To Earn a Better Salary</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="reason" value="2" id="reason-2">
+              <input class="form-check-input" type="radio" name="reason" value="2" id="reason-2">
               <label class="form-check-label" for="reason-2">It Sounds Fun</label>
             </div>
             <!-- Windows or Mac -->
@@ -125,14 +125,14 @@
             <div class="form-check">
               <span>Windows</span>
               <label class="switch">
-                <input type="checkbox" name="hardware">
+                <input id="platform-value" type="checkbox" name="platform">
                 <span class="slider toggle"></span>
               </label>
               <span>Mac</span>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="hardware" value="2" id="hardware-2">
-              <label class="form-check-label" for="hardware-2">No Preference</label>
+              <input class="form-check-input" type="checkbox" name="platform-matters" value="2" id="platform-2">
+              <label class="form-check-label" for="platform-2">No Preference</label>
             </div>
             <button id="submit-2b" class="btn btn-primary" type="submit">Learn My Language!</button>
           </form>
@@ -151,10 +151,10 @@
               <div class="modal-body">
                 <h4 id="result-lang"></h4>
                 <p id="result-details"></p>
-                <a href="#">More Details</a>
+                <a id="result-link" href="#">More Details</a>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Reset Quiz</button>
+                <button id="modal-btn" type="button" class="btn btn-secondary" data-dismiss="modal">Reset Quiz</button>
               </div>
             </div>
           </div>
