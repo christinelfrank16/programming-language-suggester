@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Programming Language Quiz</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
     <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
@@ -17,7 +17,7 @@
           <p>Take the quiz below to learn what type of programming language is best for you.</p>
         </div>
       </div>
-      <div class="group-1">
+      <div id="group-1">
         <form id="quiz-intro">
           <h2>Answer these questions and then more specific questions will be shown.</h2>
           <!-- Q: what type of learner are you? -->
@@ -32,7 +32,7 @@
           </div>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="learn" value="2" id="learn-2">
-            <label class="form-check-label" for="learn-2">Verbal (By Speach)</label>
+            <label class="form-check-label" for="learn-2">Verbal (By Speech)</label>
           </div>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="learn" value="3" id="learn-3">
@@ -59,10 +59,10 @@
           <div class="slidecontainer">
             <input type="range" min="0" max="10" value="5" class="slider" id="prior-exp">
           </div>
-          <button id="submit-1" type="submit">See more questions</button>
+          <button id="submit-1" class="btn btn-primary" type="submit">See more questions</button>
         </form>
       </div>
-      <div class="group-2a">
+      <div id="group-2a">
         <form id="quiz-specific-1">
           <h3>Do you want to interface with hardware?</h3>
           <div class="form-check">
@@ -98,10 +98,10 @@
             <input class="form-check-input" type="checkbox" name="features" value="4" id="features-4">
             <label class="form-check-label" for="features-4">Similar to Other Languages</label>
           </div>
-          <button id="submit-2a" type="submit">Learn My Language!</button>
+          <button id="submit-2a" class="btn btn-primary" type="submit">Learn My Language!</button>
         </form>
       </div>
-      <div class="group-2b">
+      <div id="group-2b">
         <form id="quiz-specific-2">
           <!-- Why do you want to learn a new languange -->
           <h3>Why do you want to learn a new programming language?</h3>
@@ -131,10 +131,25 @@
             <input class="form-check-input" type="checkbox" name="hardware" value="2" id="hardware-2">
             <label class="form-check-label" for="hardware-2">No Preference</label>
           </div>
+          <button id="submit-2b" class="btn btn-primary" type="submit">Learn My Language!</button>
         </form>
       </div>
       <div class="modal">
-
+        <div class="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">You should learn:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p id="result-value"></p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
