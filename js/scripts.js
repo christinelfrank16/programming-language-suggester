@@ -18,66 +18,71 @@ $(document).ready(function(){
     var hardwareMeaning = $("input:checkbox[name=hardware-meaning]").prop("checked");
     var features = $("input:checkbox[name=features]:checked").toArray();
 
-    // wants to interface with hardware
-    if(!hardwareMeaning && hardware){
-      if(data.learn === 0 || data.styling === 2){
-        $("#result-lang").text("LabVIEW");
-        $("#result-details").text(`
-        LabVIEW offers a graphical programming approach
-      	that helps you visualize every aspect of your application,
-      	including hardware configuration, measurement data, and
-      	debugging. This visualization makes it simple to integrate
-      	measurement hardware from any vendor, represent complex
-      	logic on the diagram, develop data analysis algorithms, and
-      	design custom engineering user interfaces.
-        `);
-        $("#result-link").attr("href", "https://www.ni.com/en-us/shop/labview.html");
-      }
-      else if (checkFeaturesArray(features, "2")){ // checks if easy to learn is selected
-        $("#result-lang").text("Python");
-        $("#result-details").text(`
-          Python is an interpreted, high-level, general-purpose
-        	programming language. Python's design philosophy emphasizes
-        	code readability with its notable use of significant
-        	whitespace. Its language constructs and object-oriented
-        	approach aim to help programmers write clear, logical code
-        	for small and large-scale projects.
-        `);
-        $("#result-link").attr("href", "https://en.wikipedia.org/wiki/Python_(programming_language)");
-      } else {
-        $("#result-lang").text("C#");
-        $("#result-details").text(`
-          This language is a general-purpose, multi-paradigm programming language
-        	encompassing strong typing, lexically scoped, imperative,
-        	declarative, functional, generic, object-oriented
-        	(class-based), and component-oriented programming
-        	disciplines.
-        `);
-        $("#result-link").attr("href", "https://en.wikipedia.org/wiki/C_Sharp_(programming_language)");
-      }
-    } else if (!hardwareMeaning){
-      // does not want to interface with hardware
-      $("#result-lang").text("Ruby");
-      $("#result-details").text(`
-        A dynamic, open source programming language with a
-      	focus on simplicity and productivity. It has an elegant
-      	syntax that is natural to read and easy to write.
-      `);
-      $("#result-link").attr("href", "https://www.ruby-lang.org/en/");
+    if(features.length === 0){
+      alert("Please check at least one feature important to you.");
     } else {
-      // doesn't know about interfacing
-      $("#result-lang").text("JavaScript");
-      $("#result-details").text(`
-        JavaScript (JS) is a lightweight, interpreted,
-      	or just-in-time compiled programming language with
-      	first-class functions. While it is most well-known as the
-      	scripting language for Web pages, many non-browser
-      	environments also use it.
-      `);
-      $("#result-link").attr("href", "https://developer.mozilla.org/en-US/docs/Web/JavaScript");
-    }
 
-    $(".modal").modal("show");
+      // wants to interface with hardware
+      if(!hardwareMeaning && hardware){
+        if(data.learn === 0 || data.styling === 2){
+          $("#result-lang").text("LabVIEW");
+          $("#result-details").text(`
+          LabVIEW offers a graphical programming approach
+        	that helps you visualize every aspect of your application,
+        	including hardware configuration, measurement data, and
+        	debugging. This visualization makes it simple to integrate
+        	measurement hardware from any vendor, represent complex
+        	logic on the diagram, develop data analysis algorithms, and
+        	design custom engineering user interfaces.
+          `);
+          $("#result-link").attr("href", "https://www.ni.com/en-us/shop/labview.html");
+        }
+        else if (checkFeaturesArray(features, "2")){ // checks if easy to learn is selected
+          $("#result-lang").text("Python");
+          $("#result-details").text(`
+            Python is an interpreted, high-level, general-purpose
+          	programming language. Python's design philosophy emphasizes
+          	code readability with its notable use of significant
+          	whitespace. Its language constructs and object-oriented
+          	approach aim to help programmers write clear, logical code
+          	for small and large-scale projects.
+          `);
+          $("#result-link").attr("href", "https://en.wikipedia.org/wiki/Python_(programming_language)");
+        } else {
+          $("#result-lang").text("C#");
+          $("#result-details").text(`
+            This language is a general-purpose, multi-paradigm programming language
+          	encompassing strong typing, lexically scoped, imperative,
+          	declarative, functional, generic, object-oriented
+          	(class-based), and component-oriented programming
+          	disciplines.
+          `);
+          $("#result-link").attr("href", "https://en.wikipedia.org/wiki/C_Sharp_(programming_language)");
+        }
+      } else if (!hardwareMeaning){
+        // does not want to interface with hardware
+        $("#result-lang").text("Ruby");
+        $("#result-details").text(`
+          A dynamic, open source programming language with a
+        	focus on simplicity and productivity. It has an elegant
+        	syntax that is natural to read and easy to write.
+        `);
+        $("#result-link").attr("href", "https://www.ruby-lang.org/en/");
+      } else {
+        // doesn't know about interfacing
+        $("#result-lang").text("JavaScript");
+        $("#result-details").text(`
+          JavaScript (JS) is a lightweight, interpreted,
+        	or just-in-time compiled programming language with
+        	first-class functions. While it is most well-known as the
+        	scripting language for Web pages, many non-browser
+        	environments also use it.
+        `);
+        $("#result-link").attr("href", "https://developer.mozilla.org/en-US/docs/Web/JavaScript");
+      }
+
+      $(".modal").modal("show");
+    }
   });
 
   // show results when second quiz (b) is submitted
@@ -202,6 +207,7 @@ function getInfoQuizValues(data){
 
 function showSecondQuiz(data){
   getInfoQuizValues(data);
+  $("h2").hide();
   // determine which 2nd quiz and show
   if((data.experience > 2 && data.effort >= 6) || data.experience >= 5) {
     $("#group-2a").show();
