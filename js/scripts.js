@@ -60,7 +60,7 @@ function showSecondQuiz(data){
   getInfoQuizValues(data);
   $("h2").hide();
   // determine which 2nd quiz and show
-  if((data.experience > 2 && data.effort >= 6) || data.experience >= 5) {
+  if(data.use === 0 || ((data.experience > 2 && data.effort >= 6) || data.experience >= 5)) {
     $("#group-2a").show();
   }
   else {
@@ -79,7 +79,7 @@ function showResultsQuiz2a(data){
 
     // wants to interface with hardware
     if(!hardwareMeaning && hardware){
-      if(data.use === 0 || data.styling === 2){
+      if(!checkFeaturesArray(features, "4") && !data.styling === 0){ // not similar to other languages and not really pretty
         $("#result-lang").text("LabVIEW");
         $("#result-details").text(`
         LabVIEW offers a graphical programming approach
@@ -92,7 +92,7 @@ function showResultsQuiz2a(data){
         `);
         $("#result-link").attr("href", "https://www.ni.com/en-us/shop/labview.html");
       }
-      else if (checkFeaturesArray(features, "2")){ // checks if easy to use is selected
+      else if (checkFeaturesArray(features, "2") || checkFeaturesArray(features, "5")){ // checks if easy to use is selected
         $("#result-lang").text("Python");
         $("#result-details").text(`
           Python is an interpreted, high-level, general-purpose
@@ -114,7 +114,7 @@ function showResultsQuiz2a(data){
         `);
         $("#result-link").attr("href", "https://en.wikipedia.org/wiki/C_Sharp_(programming_language)");
       }
-    } else if (!hardwareMeaning){
+    } else if (!hardwareMeaning && (checkFeaturesArray(features, "2") || checkFeaturesArray(features, "4"))){
       // does not want to interface with hardware
       $("#result-lang").text("Ruby");
       $("#result-details").text(`
