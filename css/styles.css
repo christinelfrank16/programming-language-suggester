@@ -10,7 +10,19 @@ h3, .btn {
   display: none;
 }
 
+#note {
+  position: relative;
+  display: inline-block;
+  font-size: 12px;
+  width: 60%;
+  top: 0;
+  left:-78px;
+}
 
+#modal-btn{
+  margin-top: auto;
+  margin-bottom: auto;
+}
 
 
 /* Referenced toggle switch at W3 */
