@@ -203,7 +203,7 @@ function getInfoQuizValues(data){
 function showSecondQuiz(data){
   getInfoQuizValues(data);
   // determine which 2nd quiz and show
-  if((data.experience > 3 && data.effort >= 6) || data.experience >= 6) {
+  if((data.experience > 2 && data.effort >= 6) || data.experience >= 5) {
     $("#group-2a").show();
   }
   else {

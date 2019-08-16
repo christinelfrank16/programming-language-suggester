@@ -1,10 +1,28 @@
+
+body  {
+  background-image: url("../img/languages.jpg");
+  background-size: auto;
+  background-repeat: round;
+  background-position: top;
+  background-color: grey;
+}
+
+h2 {
+  background-color: lightgrey;
+
+}
+
+
 h3, .btn {
   margin-top: 20px;
 }
+
 #group-1, #group-2a, #group-2b {
   border: 2px solid lightgrey;
   margin: 10px 0;
   padding: 10px 10px;
+  background-color: white;
+  opacity: 0.95;
 }
 #group-2a, #group-2b {
   display: none;
