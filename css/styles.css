@@ -130,7 +130,8 @@ input:checked + .toggle:before {
   cursor: pointer;
 }
 
-/* Assisted by https://stackoverflow.com/questions/18053408/vertically-centering-bootstrap-modal-window*/
+/* Centering modal references StackOverflow */
+/* https://stackoverflow.com/questions/18053408/vertically-centering-bootstrap-modal-window*/
 @media screen and (max-width: 700px) {
   .vertical-alignment-helper {
     display:table;
