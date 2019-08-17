@@ -20,7 +20,12 @@
       <div id="group-1">
         <form id="quiz-intro">
           <h2>Answer these questions and then more specific questions will be shown.</h2>
-          <!-- Q: what type of learner are you? -->
+
+          <div class="form-group">
+            <h3>Enter your name:</h3>
+            <input class="form-control" type="text" id="name" required>
+          </div>
+
           <h3>How would you use your programming skills?</h3>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="use" value="0" id="use-0" required>
@@ -147,7 +152,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">You should learn:</h5>
+                <h5 class="modal-title"><span id="result-name"></span>, you should learn:</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>

@@ -44,11 +44,13 @@ function updateSliderValues(data){
 
 function getInfoQuizValues(data){
   // Get and store variables to data object
+  var name = $("#name").val();
   var use = parseInt($("input:radio[name=use]:checked").val());
   var experience = parseInt($("#prior-exp").val());
   var styling = parseInt($("#style-type").val());
   var effort = parseInt($("#effort").val());
 
+  data.name = name;
   data.experience = experience;
   data.effort = effort;
   data.use = use;
@@ -135,6 +137,8 @@ function showResultsQuiz2a(data){
       `);
       $("#result-link").attr("href", "https://developer.mozilla.org/en-US/docs/Web/JavaScript");
     }
+
+    $("#result-name").text(data.name);
     $(".modal").modal("show");
   }
 }
@@ -215,7 +219,7 @@ function showResultsQuiz2b(data){
       $("#result-link").attr("href", "https://en.wikipedia.org/wiki/Java_(programming_language)");
     }
   }
-
+  $("#result-name").text(data.name);
   $(".modal").modal("show");
 }
 
